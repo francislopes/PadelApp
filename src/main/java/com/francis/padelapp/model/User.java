@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Data
@@ -20,10 +21,13 @@ public class User {
     private String password;
     private Long phoneNumber;
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tbl_user_role_rel",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name="tbl_user_role_rel",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_id"))
+    private Set<Role> roles = new LinkedHashSet<>();
 
 }
