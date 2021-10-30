@@ -22,6 +22,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailConfiguration userDetailConfiguration;
 
     @Override
+    //Authentication configuration
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailConfiguration).passwordEncoder(passwordEncoder());
     }
@@ -32,6 +33,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    //Authorization configuration
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().disable();
         http.csrf().disable();
@@ -40,12 +42,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/events/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/events/**").hasRole("USER")
-                .antMatchers(HttpMethod.PATCH, "/events/**").hasRole("USER")
-                .antMatchers(HttpMethod.DELETE, "/events/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/game/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/game/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/game/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/game/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
     }
+
+
 }
