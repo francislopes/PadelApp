@@ -1,4 +1,4 @@
-# PadelApp
+# PadelApp :tennis:
 This project is being developed and used as a lab apply the tools I have been learning during the courses that I am doing.
 
 The goal is to have an application to setup an manage padel games. 
