@@ -42,14 +42,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/game/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/game/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/game/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/game/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.POST, "/game/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/game/**").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.PUT, "/game/**").hasAnyRole("USER","ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/game/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
     }
-
 
 }
