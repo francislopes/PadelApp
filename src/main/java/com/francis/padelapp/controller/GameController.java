@@ -6,8 +6,11 @@ import com.francis.padelapp.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -56,8 +59,9 @@ public class GameController {
         gameService.delete(id);
     }
 
-
-
-
+    @PostMapping("/upload")
+    public ResponseEntity<List<Game>> uploadFile(@RequestParam("file") MultipartFile file) {
+        return new ResponseEntity<>(gameService.uploadFile(file), HttpStatus.OK);
+    }
 
 }
