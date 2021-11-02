@@ -3,6 +3,7 @@ package com.francis.padelapp.service;
 import com.francis.padelapp.model.Game;
 import com.francis.padelapp.model.request.GameRequest;
 import com.francis.padelapp.repository.GameRepository;
+import com.itextpdf.text.DocumentException;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -15,8 +16,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import static com.francis.padelapp.util.BuildCSV.buildCSV;
+import static com.francis.padelapp.util.BuildPDF.buildPDF;
+import static com.francis.padelapp.util.BuildXLSX.buildXLSX;
 
 @Service
 public class GameService {
@@ -101,6 +109,36 @@ public class GameService {
         if (extension == null || !allowedExtension.toLowerCase().equals(extension.toLowerCase()))
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     String.format("The file has an extension that is not allowed, please try again using an { %s } file", allowedExtension));
+    }
+
+    public void pdf(HttpServletResponse response) throws IOException, DocumentException {
+        var report = findAll();
+        var currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+        response.setHeader("Content-Disposition", "attachment; filename=report_" + currentDateTime + ".pdf");
+        response.setContentType("application/pdf");
+
+        buildPDF(response, report);
+    }
+
+    public void csv(HttpServletResponse response) throws IOException {
+        var report = findAll();
+        var currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+        response.setHeader("Content-Disposition", "attachment; filename=report_" + currentDateTime + ".csv");
+        response.setContentType("text/csv");
+
+        buildCSV(response, report);
+    }
+
+    public void xlsx(HttpServletResponse response) throws IOException {
+        var report = findAll();
+        var currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+        response.setHeader("Content-Disposition", "attachment; filename=report_" + currentDateTime + ".xlsx");
+        response.setContentType("application/vnd.ms-excel");
+
+        buildXLSX(response, report);
     }
 
 }
