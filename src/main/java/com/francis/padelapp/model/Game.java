@@ -4,10 +4,7 @@ import com.francis.padelapp.enums.GameStatus;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Audited
@@ -19,8 +16,9 @@ public class Game {
     private Long id;
     private LocalDateTime date;
     private LocalDateTime time;
-    private String Address;
-    private GameStatus status = GameStatus.BOOKING;
+    private String address;
+    @Enumerated
+    private GameStatus status = GameStatus.OPEN;
     private String comments;
 
 }
