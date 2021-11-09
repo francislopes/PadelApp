@@ -100,7 +100,7 @@ public class GameService {
 
                         // creating and saving an Event
                         var game = new Game();
-                        game.setDate(row.getCell(0).getLocalDateTimeCellValue());
+                        game.setDate(row.getCell(0).getLocalDateTimeCellValue().toLocalDate());
                         game.setTime(row.getCell(0).getLocalDateTimeCellValue());
                         game.setAddress(row.getCell(0).getStringCellValue());
                         game.setComments(row.getCell(0).getStringCellValue());

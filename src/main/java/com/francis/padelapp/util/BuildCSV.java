@@ -17,7 +17,7 @@ public class BuildCSV {
     }
 
     private static List<String[]> convert(List<Game> report) {
-        String[] header = {"ID", "DATE", "TIME", "ADDRESS", "STATUS", "COMMENTS"};
+        String[] header = {"ID", "DATE", "TIME", "ADDRESS", "STATUS", "COMMENTS", "PLAYER_ONE", "PLAYER_TWO", "PLAYER_THREE", "PLAYER_FOUR"};
 
         List<String[]> list = new ArrayList<>();
         list.add(header);
@@ -25,11 +25,15 @@ public class BuildCSV {
         for (Game r : report) {
             String[] temp = new String[header.length];
             temp[0] = String.valueOf(r.getId());
-            temp[1] = String.valueOf(r.getTime());
+            temp[1] = String.valueOf(r.getDate());
             temp[2] = String.valueOf(r.getTime());
             temp[3] = String.valueOf(r.getAddress());
             temp[4] = String.valueOf(r.getStatus());
             temp[5] = String.valueOf(r.getComments());
+            temp[6] = String.valueOf(r.getPlayerOne());
+            temp[7] = String.valueOf(r.getPlayerTwo());
+            temp[8] = String.valueOf(r.getPlayerThree());
+            temp[9] = String.valueOf(r.getPlayerFour());
             list.add(temp);
         }
         return list;

@@ -3,13 +3,14 @@ package com.francis.padelapp.model.response;
 import com.francis.padelapp.enums.GameStatus;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 public class GameResponse {
 
     private Long id;
-    private LocalDateTime date;
+    private LocalDate date;
     private LocalDateTime time;
     private String address;
     private GameStatus status;

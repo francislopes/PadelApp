@@ -4,13 +4,14 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 public class GameRequest {
 
     @NotNull(message = "Date is mandatory.")
-    private LocalDateTime date;
+    private LocalDate date;
     @NotNull(message = "Time is mandatory.")
     private LocalDateTime time;
     @NotBlank(message = "Address is mandatory.")

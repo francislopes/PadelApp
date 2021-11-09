@@ -19,6 +19,11 @@ public class BuildXLSX {
         sheet.setColumnWidth(3, 4000);
         sheet.setColumnWidth(4, 4000);
         sheet.setColumnWidth(5, 4000);
+        sheet.setColumnWidth(6, 4000);
+        sheet.setColumnWidth(7, 4000);
+        sheet.setColumnWidth(8, 4000);
+        sheet.setColumnWidth(9, 4000);
+
 
         // header
         var header = sheet.createRow(0);
@@ -54,6 +59,22 @@ public class BuildXLSX {
         headerCell.setCellValue("COMMENTS");
         headerCell.setCellStyle(headerStyle);
 
+        headerCell = header.createCell(6);
+        headerCell.setCellValue("PLAYER_ONE");
+        headerCell.setCellStyle(headerStyle);
+
+        headerCell = header.createCell(7);
+        headerCell.setCellValue("PLAYER_TWO");
+        headerCell.setCellStyle(headerStyle);
+
+        headerCell = header.createCell(8);
+        headerCell.setCellValue("PLAYER_THREE");
+        headerCell.setCellStyle(headerStyle);
+
+        headerCell = header.createCell(9);
+        headerCell.setCellValue("PLAYER_FOUR");
+        headerCell.setCellStyle(headerStyle);
+
         // rows
         var rowNum = 1;
         for (Game r : report) {
@@ -76,6 +97,18 @@ public class BuildXLSX {
 
             cell = row.createCell(5);
             cell.setCellValue(String.valueOf(r.getComments()));
+
+            cell = row.createCell(6);
+            cell.setCellValue(String.valueOf(r.getPlayerOne()));
+
+            cell = row.createCell(7);
+            cell.setCellValue(String.valueOf(r.getPlayerTwo()));
+
+            cell = row.createCell(8);
+            cell.setCellValue(String.valueOf(r.getPlayerThree()));
+
+            cell = row.createCell(9);
+            cell.setCellValue(String.valueOf(r.getPlayerFour()));
         }
 
         workbook.write(response.getOutputStream());
