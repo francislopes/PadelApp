@@ -20,6 +20,11 @@ public class Game {
     @Enumerated
     private GameStatus status = GameStatus.OPEN;
     private String comments;
+    private String playerOne;
+    private String playerTwo;
+    private String playerThree;
+    private String playerFour;
+
 
 }
 

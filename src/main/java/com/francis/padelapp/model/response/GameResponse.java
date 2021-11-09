@@ -14,5 +14,9 @@ public class GameResponse {
     private String address;
     private GameStatus status;
     private String comments;
+    private String playerOne;
+    private String playerTwo;
+    private String playerThree;
+    private String playerFour;
 
 }

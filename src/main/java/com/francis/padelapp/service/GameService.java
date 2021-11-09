@@ -47,6 +47,10 @@ public class GameService {
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(request.getPlayerOne());
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -57,6 +61,10 @@ public class GameService {
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(request.getPlayerOne());
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -67,6 +75,10 @@ public class GameService {
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(request.getPlayerOne());
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -92,6 +104,10 @@ public class GameService {
                         game.setTime(row.getCell(0).getLocalDateTimeCellValue());
                         game.setAddress(row.getCell(0).getStringCellValue());
                         game.setComments(row.getCell(0).getStringCellValue());
+                        game.setPlayerOne(row.getCell(0).getStringCellValue());
+                        game.setPlayerTwo(row.getCell(0).getStringCellValue());
+                        game.setPlayerThree(row.getCell(0).getStringCellValue());
+                        game.setPlayerFour(row.getCell(0).getStringCellValue());
                         gameRepository.saveAndFlush(game);
                     }
                 }

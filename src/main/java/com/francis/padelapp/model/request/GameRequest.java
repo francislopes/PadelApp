@@ -16,5 +16,8 @@ public class GameRequest {
     @NotBlank(message = "Address is mandatory.")
     private String address;
     private String comments;
-
+    private String playerOne;
+    private String playerTwo;
+    private String playerThree;
+    private String playerFour;
 }
