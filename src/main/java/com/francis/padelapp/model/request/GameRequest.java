@@ -14,7 +14,7 @@ public class GameRequest {
     @NotNull(message = "Date is mandatory.")
     private LocalDate date;
     @NotNull(message = "Time is mandatory.")
-   // private LocalTime time;
+    private LocalTime time;
     @NotBlank(message = "Address is mandatory.")
     private String address;
     private String comments;

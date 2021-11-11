@@ -17,7 +17,7 @@ public class Game {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    //private LocalTime time;
+    private LocalTime time;
     private String address;
     @Enumerated(EnumType.STRING)
     private GameStatus status = GameStatus.OPEN;

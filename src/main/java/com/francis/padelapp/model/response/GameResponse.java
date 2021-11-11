@@ -12,7 +12,6 @@ public class GameResponse {
 
     private Long id;
     private LocalDate date;
-    //private LocalTime time;
     private String address;
     private GameStatus status;
     private String comments;

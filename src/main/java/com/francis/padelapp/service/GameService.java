@@ -51,7 +51,7 @@ public class GameService {
 
         var game = new Game();
         game.setDate(request.getDate());
-        //game.setTime(request.getTime());
+        game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
         game.setPlayerOne(StringUtils.capitalize(loggedUser));
@@ -65,7 +65,7 @@ public class GameService {
     public Game update(Long id, GameRequest request) {
         var game = findByID(id);
         game.setDate(request.getDate());
-        //game.setTime(request.getTime());
+        game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
         game.setPlayerOne(request.getPlayerOne());
@@ -79,7 +79,7 @@ public class GameService {
     public Game replace(Long id, GameRequest request) {
         var game = findByID(id);
         game.setDate(request.getDate());
-        //game.setTime(request.getTime());
+        game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
         game.setPlayerOne(request.getPlayerOne());
@@ -108,7 +108,7 @@ public class GameService {
                         // creating and saving an Event
                         var game = new Game();
                         game.setDate(LocalDate.parse(row.getCell(0).getStringCellValue()));
-                        //game.setTime(LocalTime.parse(row.getCell(1).getStringCellValue()));
+                        game.setTime(LocalTime.parse(row.getCell(1).getStringCellValue()));
                         game.setAddress(row.getCell(2).getStringCellValue());
                         game.setComments(row.getCell(3).getStringCellValue());
                         game.setPlayerOne(row.getCell(4).getStringCellValue());

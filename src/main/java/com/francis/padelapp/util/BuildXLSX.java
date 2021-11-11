@@ -86,8 +86,8 @@ public class BuildXLSX {
             cell = row.createCell(1);
             cell.setCellValue(String.valueOf(r.getDate()));
 
-//            cell = row.createCell(2);
-//            cell.setCellValue(String.valueOf(r.getTime()));
+            cell = row.createCell(2);
+            cell.setCellValue(String.valueOf(r.getTime()));
 
             cell = row.createCell(3);
             cell.setCellValue(String.valueOf(r.getAddress()));
