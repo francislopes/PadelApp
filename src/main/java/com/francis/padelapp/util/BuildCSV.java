@@ -26,7 +26,7 @@ public class BuildCSV {
             String[] temp = new String[header.length];
             temp[0] = String.valueOf(r.getId());
             temp[1] = String.valueOf(r.getDate());
-            temp[2] = String.valueOf(r.getTime());
+//            temp[2] = String.valueOf(r.getTime());
             temp[3] = String.valueOf(r.getAddress());
             temp[4] = String.valueOf(r.getStatus());
             temp[5] = String.valueOf(r.getComments());

@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -50,10 +51,10 @@ public class GameService {
 
         var game = new Game();
         game.setDate(request.getDate());
-        game.setTime(request.getTime());
+        //game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
-        game.setPlayerOne(loggedUser);
+        game.setPlayerOne(StringUtils.capitalize(loggedUser));
         game.setPlayerTwo(request.getPlayerTwo());
         game.setPlayerThree(request.getPlayerThree());
         game.setPlayerFour(request.getPlayerFour());
@@ -64,7 +65,7 @@ public class GameService {
     public Game update(Long id, GameRequest request) {
         var game = findByID(id);
         game.setDate(request.getDate());
-        game.setTime(request.getTime());
+        //game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
         game.setPlayerOne(request.getPlayerOne());
@@ -78,7 +79,7 @@ public class GameService {
     public Game replace(Long id, GameRequest request) {
         var game = findByID(id);
         game.setDate(request.getDate());
-        game.setTime(request.getTime());
+        //game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
         game.setPlayerOne(request.getPlayerOne());
@@ -106,14 +107,14 @@ public class GameService {
 
                         // creating and saving an Event
                         var game = new Game();
-                        game.setDate(LocalDate.from(row.getCell(0).getLocalDateTimeCellValue()));
-                        game.setTime(LocalTime.from(row.getCell(0).getLocalDateTimeCellValue()));
-                        game.setAddress(row.getCell(0).getStringCellValue());
-                        game.setComments(row.getCell(0).getStringCellValue());
-                        game.setPlayerOne(row.getCell(0).getStringCellValue());
-                        game.setPlayerTwo(row.getCell(0).getStringCellValue());
-                        game.setPlayerThree(row.getCell(0).getStringCellValue());
-                        game.setPlayerFour(row.getCell(0).getStringCellValue());
+                        game.setDate(LocalDate.parse(row.getCell(0).getStringCellValue()));
+                        //game.setTime(LocalTime.parse(row.getCell(1).getStringCellValue()));
+                        game.setAddress(row.getCell(2).getStringCellValue());
+                        game.setComments(row.getCell(3).getStringCellValue());
+                        game.setPlayerOne(row.getCell(4).getStringCellValue());
+                        game.setPlayerTwo(row.getCell(5).getStringCellValue());
+                        game.setPlayerThree(row.getCell(6).getStringCellValue());
+                        game.setPlayerFour(row.getCell(7).getStringCellValue());
                         gameRepository.saveAndFlush(game);
                     }
                 }

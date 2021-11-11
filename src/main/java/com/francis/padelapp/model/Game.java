@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -16,9 +17,9 @@ public class Game {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    private LocalTime time;
+    //private LocalTime time;
     private String address;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private GameStatus status = GameStatus.OPEN;
     private String comments;
     private String playerOne;

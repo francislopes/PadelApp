@@ -3,6 +3,7 @@ package com.francis.padelapp.model.response;
 import com.francis.padelapp.enums.GameStatus;
 import lombok.Data;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,7 +12,7 @@ public class GameResponse {
 
     private Long id;
     private LocalDate date;
-    private LocalTime time;
+    //private LocalTime time;
     private String address;
     private GameStatus status;
     private String comments;

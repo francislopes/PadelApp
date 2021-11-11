@@ -41,8 +41,8 @@ public class BuildPDF {
         table.addCell(header);
         header.setPhrase(new Phrase("DATE", font));
         table.addCell(header);
-        header.setPhrase(new Phrase("TIME", font));
-        table.addCell(header);
+//        header.setPhrase(new Phrase("TIME", font));
+//        table.addCell(header);
         header.setPhrase(new Phrase("ADDRESS", font));
         table.addCell(header);
         header.setPhrase(new Phrase("STATUS", font));
@@ -71,8 +71,8 @@ public class BuildPDF {
             table.addCell(data);
             data.setPhrase(new Phrase(String.valueOf(r.getDate()), font));
             table.addCell(data);
-            data.setPhrase(new Phrase(String.valueOf(r.getTime()), font));
-            table.addCell(data);
+//            data.setPhrase(new Phrase(String.valueOf(r.getTime()), font));
+//            table.addCell(data);
             data.setPhrase(new Phrase(String.valueOf(r.getAddress()), font));
             table.addCell(data);
             data.setPhrase(new Phrase(String.valueOf(r.getStatus()), font));
