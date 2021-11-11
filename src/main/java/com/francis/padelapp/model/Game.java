@@ -4,11 +4,10 @@ import com.francis.padelapp.enums.GameStatus;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Audited
 @Data
@@ -17,11 +16,20 @@ public class Game {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime date;
-    private LocalDateTime time;
-    private String Address;
-    private GameStatus status = GameStatus.BOOKING;
+    private LocalDate date;
+    private LocalTime time;
+    private String address;
+    @Enumerated(EnumType.STRING)
+    private GameStatus status = GameStatus.OPEN;
     private String comments;
+    private String playerOne;
+    private String playerTwo;
+    private String playerThree;
+    private String playerFour;
+
+//    DateTimeFormatter ld = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//    DateTimeFormatter lt = DateTimeFormatter.ofPattern("HH:MM");
+
 
 }
 

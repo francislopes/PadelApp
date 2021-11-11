@@ -11,6 +11,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
 
 @Configuration
 @EnableSwagger2
@@ -20,6 +21,7 @@ public class SwaggerConfiguration {
     public Docket padelApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("API")
+                .directModelSubstitute(LocalTime.class, String.class)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.francis.padelapp.controller"))
                 .paths(PathSelectors.any())

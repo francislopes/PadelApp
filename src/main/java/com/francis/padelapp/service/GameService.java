@@ -12,13 +12,18 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -42,11 +47,17 @@ public class GameService {
     }
 
     public Game create(GameRequest request) {
+        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
+
         var game = new Game();
         game.setDate(request.getDate());
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(StringUtils.capitalize(loggedUser));
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -57,6 +68,10 @@ public class GameService {
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(request.getPlayerOne());
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -67,6 +82,10 @@ public class GameService {
         game.setTime(request.getTime());
         game.setAddress(request.getAddress());
         game.setComments(request.getComments());
+        game.setPlayerOne(request.getPlayerOne());
+        game.setPlayerTwo(request.getPlayerTwo());
+        game.setPlayerThree(request.getPlayerThree());
+        game.setPlayerFour(request.getPlayerFour());
         return gameRepository.saveAndFlush(game);
 
     }
@@ -88,10 +107,14 @@ public class GameService {
 
                         // creating and saving an Event
                         var game = new Game();
-                        game.setDate(row.getCell(0).getLocalDateTimeCellValue());
-                        game.setTime(row.getCell(0).getLocalDateTimeCellValue());
-                        game.setAddress(row.getCell(0).getStringCellValue());
-                        game.setComments(row.getCell(0).getStringCellValue());
+                        game.setDate(LocalDate.parse(row.getCell(0).getStringCellValue()));
+                        game.setTime(LocalTime.parse(row.getCell(1).getStringCellValue()));
+                        game.setAddress(row.getCell(2).getStringCellValue());
+                        game.setComments(row.getCell(3).getStringCellValue());
+                        game.setPlayerOne(row.getCell(4).getStringCellValue());
+                        game.setPlayerTwo(row.getCell(5).getStringCellValue());
+                        game.setPlayerThree(row.getCell(6).getStringCellValue());
+                        game.setPlayerFour(row.getCell(7).getStringCellValue());
                         gameRepository.saveAndFlush(game);
                     }
                 }

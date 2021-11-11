@@ -18,7 +18,7 @@ public class BuildPDF {
 
         document.open();
 
-        PdfPTable table = new PdfPTable(6);
+        PdfPTable table = new PdfPTable(10);
         table.setWidthPercentage(100f);
         table.setSpacingBefore(10f);
         writeHeader(table);
@@ -49,6 +49,14 @@ public class BuildPDF {
         table.addCell(header);
         header.setPhrase(new Phrase("COMMENTS", font));
         table.addCell(header);
+        header.setPhrase(new Phrase("PLAYER_ONE", font));
+        table.addCell(header);
+        header.setPhrase(new Phrase("PLAYER_TWO", font));
+        table.addCell(header);
+        header.setPhrase(new Phrase("PLAYER_THREE", font));
+        table.addCell(header);
+        header.setPhrase(new Phrase("PLAYER_FOUR", font));
+        table.addCell(header);
     }
 
     public static void writeData(PdfPTable table, List<Game> report) {
@@ -70,6 +78,14 @@ public class BuildPDF {
             data.setPhrase(new Phrase(String.valueOf(r.getStatus()), font));
             table.addCell(data);
             data.setPhrase(new Phrase(String.valueOf(r.getComments()), font));
+            table.addCell(data);
+            data.setPhrase(new Phrase(String.valueOf(r.getPlayerOne()), font));
+            table.addCell(data);
+            data.setPhrase(new Phrase(String.valueOf(r.getPlayerTwo()), font));
+            table.addCell(data);
+            data.setPhrase(new Phrase(String.valueOf(r.getPlayerThree()), font));
+            table.addCell(data);
+            data.setPhrase(new Phrase(String.valueOf(r.getPlayerFour()), font));
             table.addCell(data);
         }
     }

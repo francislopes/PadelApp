@@ -1,8 +1,7 @@
 package com.francis.padelapp.enums;
 
 public enum GameStatus {
-
-    BOOKING,
+    OPEN,
     CONFIRMED,
     CLOSED
 }
