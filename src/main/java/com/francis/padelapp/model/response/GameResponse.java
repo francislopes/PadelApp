@@ -4,14 +4,14 @@ import com.francis.padelapp.enums.GameStatus;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 public class GameResponse {
 
     private Long id;
     private LocalDate date;
-    private LocalDateTime time;
+    private LocalTime time;
     private String address;
     private GameStatus status;
     private String comments;
