@@ -26,37 +26,37 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @ApiOperation("Find all games.")
+    @ApiOperation("Find all games")
     @GetMapping
     public List<Game> findAll() {
         return gameService.findAll();
     }
 
-    @ApiOperation("Find a game by Id.")
+    @ApiOperation("Find a game by Id")
     @GetMapping("/{id}")
     public Game findById(@PathVariable Long id) {
         return gameService.findByID(id);
     }
 
-    @ApiOperation("Create a game.")
+    @ApiOperation("Create a game")
     @PostMapping
     public Game create(@RequestBody @Valid GameRequest request) {
         return gameService.create(request);
     }
 
-    @ApiOperation("Update a game.")
+    @ApiOperation("Update a game")
     @PatchMapping("/{id}")
     public Game update(@PathVariable Long id, @RequestBody GameRequest request) {
         return gameService.update(id, request);
     }
 
-    @ApiOperation("Replace a game.")
+    @ApiOperation("Replace a game")
     @PutMapping("/{id}")
     public Game replace(@PathVariable Long id, @RequestBody GameRequest request) {
         return gameService.replace(id, request);
     }
 
-    @ApiOperation("Delete a game.")
+    @ApiOperation("Delete a game")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         gameService.delete(id);

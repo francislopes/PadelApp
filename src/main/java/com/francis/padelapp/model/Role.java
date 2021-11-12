@@ -20,7 +20,6 @@ public class Role {
     private RoleName name;
     @ToString.Exclude
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-//    private Set<User> users = new LinkedHashSet<>();
     private List<User> users;
 
 }
